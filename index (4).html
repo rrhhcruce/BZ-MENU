@@ -1,0 +1,1258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menú Mayo 2026 — BZ</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0f4f8;
+    --surface: #ffffff;
+    --surface2: #f5f8fc;
+    --border: #dce6f0;
+    --bz-blue: #1565C0;
+    --bz-blue-light: #1976D2;
+    --bz-blue-dark: #0D47A1;
+    --bz-blue-pale: #E3F0FF;
+    --accent: #1565C0;
+    --accent-hover: #1976D2;
+    --text: #1a2a3a;
+    --text-muted: #5a7090;
+    --green: #2e7d32;
+    --green-pale: #e8f5e9;
+    --red: #c62828;
+    --red-pale: #ffebee;
+    --orange: #e65100;
+    --orange-pale: #fff3e0;
+    --radius: 12px;
+    --shadow: 0 2px 12px rgba(21,101,192,0.10);
+    --shadow-lg: 0 8px 32px rgba(21,101,192,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--bz-blue);
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 56px;
+    box-shadow: 0 2px 12px rgba(13,71,161,0.25);
+  }
+  .header-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-logo {
+    height: 28px;
+    filter: brightness(0) invert(1);
+  }
+  .header-divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(255,255,255,0.3);
+  }
+  .header-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 0.5px;
+  }
+  .header-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .header-user-info {
+    text-align: right;
+    line-height: 1.3;
+  }
+  .header-nombre {
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
+  }
+  .header-legajo-emp {
+    font-size: 11px;
+    color: rgba(255,255,255,0.65);
+  }
+  .btn-logout {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.9);
+    padding: 5px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    transition: all 0.2s;
+  }
+  .btn-logout:hover { background: rgba(255,255,255,0.25); }
+
+  /* ── SCREENS ── */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* ── LOGIN ── */
+  .login-wrap {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(135deg, #1565C0 0%, #0D47A1 50%, #1565C0 100%);
+  }
+  .login-card {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 44px 40px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.25);
+  }
+  .login-logo-wrap {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .login-logo-img {
+    height: 48px;
+  }
+  .login-divider {
+    width: 40px;
+    height: 3px;
+    background: var(--bz-blue);
+    border-radius: 2px;
+    margin: 16px auto 0;
+  }
+  .login-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    margin-bottom: 32px;
+  }
+  .login-subtitle strong { color: var(--bz-blue); font-weight: 600; }
+
+  .form-group { margin-bottom: 18px; }
+  .form-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 7px;
+  }
+  .form-input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 14px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .form-input:focus {
+    border-color: var(--bz-blue);
+    box-shadow: 0 0 0 3px rgba(21,101,192,0.12);
+  }
+
+  /* Nombre validado bajo el input */
+  .nombre-validado {
+    display: none;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+    padding: 6px 10px;
+    background: var(--green-pale);
+    border-radius: 7px;
+  }
+  .nombre-invalido {
+    display: none;
+    margin-top: 6px;
+    font-size: 12px;
+    color: var(--red);
+    padding: 5px 10px;
+    background: var(--red-pale);
+    border-radius: 7px;
+  }
+
+  .empresa-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 6px;
+  }
+  .empresa-btn {
+    background: var(--surface2);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    padding: 13px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    color: var(--text-muted);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+  }
+  .empresa-btn:hover { border-color: var(--bz-blue); color: var(--bz-blue); }
+  .empresa-btn.selected {
+    border-color: var(--bz-blue);
+    color: var(--bz-blue);
+    background: var(--bz-blue-pale);
+  }
+
+  .btn-primary {
+    width: 100%;
+    background: var(--bz-blue);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 13px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .btn-primary:hover:not(:disabled) { background: var(--bz-blue-dark); transform: translateY(-1px); box-shadow: var(--shadow-lg); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .error-msg {
+    background: var(--red-pale);
+    border: 1px solid rgba(198,40,40,0.25);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 13px;
+    color: var(--red);
+    margin-top: 12px;
+    display: none;
+  }
+
+  /* ── MAIN APP ── */
+  .app-wrap { max-width: 980px; margin: 0 auto; padding: 24px 20px 48px; }
+
+  .mes-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .mes-titulo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 24px;
+    color: var(--bz-blue-dark);
+    letter-spacing: -0.5px;
+  }
+  .mes-titulo span { color: var(--bz-blue-light); }
+  .mes-stats { display: flex; gap: 10px; flex-wrap: wrap; }
+  .stat-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    box-shadow: var(--shadow);
+  }
+  .stat-pill strong { color: var(--bz-blue); }
+
+  /* tabs */
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 4px;
+    margin-bottom: 22px;
+    width: fit-content;
+    box-shadow: var(--shadow);
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    padding: 7px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .tab-btn.active { background: var(--bz-blue); color: #fff; font-weight: 600; }
+
+  /* ── CALENDARIO ── */
+  .semana-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    margin-top: 22px;
+  }
+  .semana-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 700px) {
+    .semana-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  .dia-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: var(--shadow);
+  }
+  .dia-card:hover { box-shadow: var(--shadow-lg); }
+  .dia-card.elegido { border-color: var(--green); }
+
+  .dia-header {
+    padding: 9px 12px 7px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background: var(--bz-blue-pale);
+  }
+  .dia-card.elegido .dia-header { background: var(--green-pale); }
+
+  .dia-nombre {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--bz-blue);
+  }
+  .dia-card.elegido .dia-nombre { color: var(--green); }
+  .dia-numero {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    color: var(--bz-blue-dark);
+  }
+  .dia-card.elegido .dia-numero { color: var(--green); }
+
+  .menu-opciones { padding: 8px; display: flex; flex-direction: column; gap: 5px; }
+
+  .menu-opcion {
+    background: var(--surface2);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 7px 9px;
+    cursor: pointer;
+    transition: all 0.18s;
+  }
+  .menu-opcion:hover { border-color: var(--bz-blue); background: var(--bz-blue-pale); }
+  .menu-opcion.selected { border-color: var(--green); background: var(--green-pale); }
+  .menu-opcion.bloqueado { pointer-events: none; }
+
+  .tipo-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 4px;
+  }
+  .badge-dia       { background: rgba(21,101,192,0.12); color: var(--bz-blue); }
+  .badge-sandwich  { background: rgba(230,81,0,0.12); color: var(--orange); }
+  .badge-veggie    { background: rgba(46,125,50,0.12); color: var(--green); }
+
+  .menu-texto {
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--text-muted);
+  }
+  .menu-opcion.selected .menu-texto { color: var(--green); }
+  .menu-opcion.selected .tipo-badge.badge-dia      { background: rgba(46,125,50,0.15); color: var(--green); }
+  .menu-opcion.selected .tipo-badge.badge-sandwich { background: rgba(46,125,50,0.15); color: var(--green); }
+  .menu-opcion.selected .tipo-badge.badge-veggie   { background: rgba(46,125,50,0.15); color: var(--green); }
+
+  .confirmar-btn {
+    width: 100%;
+    background: var(--bz-blue);
+    color: #fff;
+    border: none;
+    border-radius: 7px;
+    padding: 8px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: all 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .confirmar-btn:hover:not(:disabled) { background: var(--bz-blue-dark); }
+  .confirmar-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+  .confirmado-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 10px;
+    background: var(--green-pale);
+    border-top: 1px solid rgba(46,125,50,0.2);
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  /* ── ADMIN ── */
+  .admin-wrap { padding: 4px 0; }
+  .admin-filtros {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    align-items: center;
+  }
+  .filter-select {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    outline: none;
+    box-shadow: var(--shadow);
+  }
+  .filter-select:focus { border-color: var(--bz-blue); }
+
+  .admin-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .resumen-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    box-shadow: var(--shadow);
+  }
+  .resumen-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--bz-blue);
+  }
+  .resumen-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .admin-table-wrap { overflow-x: auto; background: var(--surface); border-radius: var(--radius); border: 1px solid var(--border); box-shadow: var(--shadow); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1.5px solid var(--border);
+    background: var(--surface2);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--bz-blue-pale); }
+
+  .badge-empresa {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge-pasteko { background: rgba(21,101,192,0.12); color: var(--bz-blue); }
+  .badge-stepako { background: rgba(230,81,0,0.12); color: var(--orange); }
+
+  .loading {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .loading::after {
+    content: '';
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-top-color: var(--bz-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-left: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 13px 18px;
+    font-size: 14px;
+    z-index: 999;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: all 0.3s ease;
+    max-width: 300px;
+    box-shadow: var(--shadow-lg);
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.ok { border-color: var(--green); color: var(--green); }
+  .toast.err { border-color: var(--red); color: var(--red); }
+
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  /* BZ logo inline SVG fallback */
+  .bz-text-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 900;
+    font-size: 20px;
+    color: #fff;
+    letter-spacing: -0.5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<!-- HEADER -->
+<div class="header" id="mainHeader" style="display:none">
+  <div class="header-brand">
+    <span class="bz-text-logo">BZ</span>
+    <div class="header-divider"></div>
+    <span class="header-title">MENÚ MAYO 2026</span>
+  </div>
+  <div class="header-user">
+    <div class="header-user-info">
+      <div class="header-nombre" id="headerNombre">—</div>
+      <div class="header-legajo-emp">
+        Leg. <strong id="headerLegajo">—</strong> · <span id="headerEmpresa">—</span>
+      </div>
+    </div>
+    <button class="btn-logout" onclick="logout()">Salir</button>
+  </div>
+</div>
+
+<!-- ════════════════════ LOGIN ════════════════════ -->
+<div class="screen active" id="screenLogin">
+  <div class="login-wrap">
+    <div class="login-card">
+
+      <div class="login-logo-wrap">
+        <div style="font-family:'Syne',sans-serif;font-weight:900;font-size:40px;color:var(--bz-blue);letter-spacing:-2px;">BZ</div>
+        <div class="login-divider"></div>
+      </div>
+
+      <p class="login-subtitle">Elegí tu menú de <strong>Mayo 2026</strong></p>
+
+      <div class="form-group">
+        <label class="form-label">Tu legajo</label>
+        <input class="form-input" type="text" id="inputLegajo"
+               placeholder="Ej: 1042" maxlength="10"
+               oninput="onLegajoInput()">
+        <div class="nombre-validado" id="nombreValidado"></div>
+        <div class="nombre-invalido" id="nombreInvalido"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Empresa</label>
+        <div class="empresa-grid">
+          <div class="empresa-btn" onclick="selectEmpresa('PASTEKO', this)">PASTEKO</div>
+          <div class="empresa-btn" onclick="selectEmpresa('STEPAKO', this)">STEPAKO</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="btnEntrar" onclick="entrar()" disabled>ENTRAR</button>
+      <div class="error-msg" id="loginError"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════ APP ════════════════════ -->
+<div class="screen" id="screenApp">
+  <div class="app-wrap">
+
+    <div class="mes-header">
+      <div class="mes-titulo">Mayo <span>2026</span></div>
+      <div class="mes-stats">
+        <div class="stat-pill">Elegidos: <strong id="statElegidos">0</strong></div>
+        <div class="stat-pill">Pendientes: <strong id="statPendientes">0</strong></div>
+      </div>
+    </div>
+
+    <div class="tabs" id="tabsWrap">
+      <button class="tab-btn active" onclick="switchTab('menu')">Mi Menú</button>
+      <button class="tab-btn" onclick="switchTab('admin')" id="tabAdmin">Elecciones</button>
+      <button class="tab-btn" onclick="switchTab('cobertura')" id="tabCobertura">Cobertura</button>
+    </div>
+
+    <div id="vistaMenu">
+      <div id="calendarioWrap"><div class="loading">Cargando menú</div></div>
+    </div>
+
+    <div id="vistaCobertura" style="display:none">
+      <div id="coberturaContent"><div class="loading">Cargando cobertura</div></div>
+    </div>
+
+    <div id="vistaAdmin" style="display:none">
+      <div class="admin-wrap">
+        <div class="admin-filtros">
+          <select class="filter-select" id="filtroEmpresa" onchange="renderAdmin()">
+            <option value="">Todas las empresas</option>
+            <option value="PASTEKO">PASTEKO</option>
+            <option value="STEPAKO">STEPAKO</option>
+          </select>
+          <select class="filter-select" id="filtroTipo" onchange="renderAdmin()">
+            <option value="">Todos los menús</option>
+            <option value="Menú del Día">Menú del Día</option>
+            <option value="Menú Sandwich">Menú Sandwich</option>
+            <option value="Menú Veggie">Menú Veggie</option>
+          </select>
+          <select class="filter-select" id="filtroFecha" onchange="renderAdmin()">
+            <option value="">Todas las fechas</option>
+          </select>
+        </div>
+        <div class="admin-resumen" id="adminResumen"></div>
+        <div class="admin-table-wrap">
+          <div id="adminContent"><div class="loading">Cargando datos</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════════════════════════
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbztagz4VTqBLczcqRifa8sTcTvAZMdWFt0HIcp7JVdoqjSEDHE186-I7ApCaMMWmdCw/exec";
+
+// ════════════════════════════════════════════════════════════
+// MOSAICO MAYO 2026
+// ════════════════════════════════════════════════════════════
+const MOSAICO = [
+  { lista:"L1",  fecha:"2026-05-01", dia:"Viernes",   menus:{ dia:"POLLO CON SALSA DE MOSTAZA Y PURÉ DE PAPAS", sandwich:"ARABE DE JAMÓN Y QUESO", veggie:"RISOTTO CON CHAMPIGNONES" }},
+  { lista:"L2",  fecha:"2026-05-02", dia:"Sábado",    menus:{ dia:"EMPANADAS JAMON Y QUESO/VERDURA", sandwich:"ZEPPELIN DE MATAMBRE ARROLLADO Y QUESO", veggie:"TEMPURA DE BRÓCOLI CON PURE DE CALABAZA" }},
+  { lista:"L3",  fecha:"2026-05-03", dia:"Domingo",   menus:{ dia:"PIZZA MUZZARELLA Y ACEITUNAS", sandwich:"SANDWICH DE PULLED CHICKEN (pollo desmenuzado con vegetales y queso)", veggie:"TORTILLA DE PAPA RELLENA CON MUZZARELLA" }},
+  { lista:"L4",  fecha:"2026-05-04", dia:"Lunes",     menus:{ dia:"MILANESA DE POLLO CON ARROZ A LA MOZZARELLA", sandwich:"LUNETA DE JAMÓN Y QUESO", veggie:"RAVIOLES DE RICOTA CON SALSA FILETO" }},
+  { lista:"L5",  fecha:"2026-05-05", dia:"Martes",    menus:{ dia:"SANDWICH DE CARNE DESMECHADA CON PAPAS CUÑA", sandwich:"ROSETTA CON MEDALLÓN DE POLLO DOBLE CON QUESO", veggie:"BURGUERS DE LENTEJAS CON QUESO CON PAPAS AL HORNO" }},
+  { lista:"L6",  fecha:"2026-05-06", dia:"Miércoles", menus:{ dia:"POLLO AL HORNO ADOBADO PAPAS DORADAS", sandwich:"FIGAZA DE LOMITO AHUMADO Y QUESO", veggie:"MILANESAS DE SOJA CON QUESO CON FIDEOS TRICOLOR A LA MANTECA" }},
+  { lista:"L7",  fecha:"2026-05-07", dia:"Jueves",    menus:{ dia:"ÑOQUIS CON SALSA BOLOGNESA", sandwich:"FLAUTA CASERA RELLENA CON SALAME Y QUESO", veggie:"ZAPALLITOS A LA MILANESA CON QUESO CON PURÉ DE PAPAS" }},
+  { lista:"L8",  fecha:"2026-05-08", dia:"Viernes",   menus:{ dia:"MILANESA DE CARNE A LA NAPOLITANA CON PURE DE PAPAS", sandwich:"PLETZALEJ DE JAMÓN Y QUESO", veggie:"PENNE RIGATTI CON CREMA DE CALABAZA, PUERRO Y TOMATITOS CHERRIES" }},
+  { lista:"L9",  fecha:"2026-05-09", dia:"Sábado",    menus:{ dia:"ARROZ AMARILLO CON ESTOFADO DE CARNE", sandwich:"FIGAZZA DE PASTRÓN Y QUESO", veggie:"HAMBURGUESAS DE GARBANZOS CON QUESO CON REVUELTO DE ACELGA" }},
+  { lista:"L10", fecha:"2026-05-10", dia:"Domingo",   menus:{ dia:"LASAGNA DE RICOTA, VERDURA, JAMÓN Y MUZZARELLA CON SALSA FILETO", sandwich:"ZEPPELIN DE MILANESA DE POLLO CON QUESO", veggie:"MEDALLONES DE SOJA CON QUESO Y PAPAS DORADAS" }},
+  { lista:"L11", fecha:"2026-05-11", dia:"Lunes",     menus:{ dia:"BONDIOLA ADOBADA CON BATATAS DORADAS", sandwich:"FLAUTA DE LOMITO AHUMADO Y QUESO", veggie:"BUDIN DE BERENJENAS CON QUESO CON GUARNICIÓN DE RISOTTO" }},
+  { lista:"L12", fecha:"2026-05-12", dia:"Martes",    menus:{ dia:"CRISPYS DE POLLO CON SALSA KETCHUP Y PAPAS AL HORNO", sandwich:"LUNETA DE JAMÓN Y QUESO", veggie:"TARTA INDIVIDUAL DE RICOTA Y CALABAZA" }},
+  { lista:"L13", fecha:"2026-05-13", dia:"Miércoles", menus:{ dia:"CALZONE NAPOLITANO", sandwich:"PLETZALEJ DE JAMÓN Y QUESO", veggie:"HAMBURGUESAS DE QUINOA GRATINADAS CON ZANAHORIAS Y PAPAS AL VAPOR" }},
+  { lista:"L14", fecha:"2026-05-14", dia:"Jueves",    menus:{ dia:"TALLARINES CON BOLOGNESA", sandwich:"SANDWICH DE PASTRÓN, QUESO Y PEPINITOS CON ADEREZO DE MOSTAZA Y MIEL", veggie:"STRUDEL DE VEGETALES Y QUESO" }},
+  { lista:"L15", fecha:"2026-05-15", dia:"Viernes",   menus:{ dia:"CUARTO DE POLLO AL HORNO CON CALABAZAS ASADAS", sandwich:"ZEPPELIN DE JAMÓN Y QUESO", veggie:"ZAPALLITOS A LA MILANESA CON QUESO CON PURÉ DE PAPAS" }},
+  { lista:"L16", fecha:"2026-05-16", dia:"Sábado",    menus:{ dia:"CARNE A LA CRIOLLA CON ARROZ MANTECADO", sandwich:"FLAUTA DE LOMITO AHUMADO Y QUESO", veggie:"TARTA INDIVIDUAL DE QUESO Y CEBOLLA" }},
+  { lista:"L17", fecha:"2026-05-17", dia:"Domingo",   menus:{ dia:"GUISO DE LENTEJAS", sandwich:"PEBETE DE MATAMBRE ARROLLADO Y QUESO", veggie:"TIRABUZONES CON SALSA 4 QUESOS" }},
+  { lista:"L18", fecha:"2026-05-18", dia:"Lunes",     menus:{ dia:"MILANESA DE POLLO CON PURE MIXTO", sandwich:"LUNETA DE JAMÓN Y QUESO", veggie:"BURGUERS DE ARVEJAS CON QUESO CON ARROZ MANTECADO" }},
+  { lista:"L19", fecha:"2026-05-19", dia:"Martes",    menus:{ dia:"CARNE A LA PIZZA CON GUARNICIÓN DE PURE DUQUESA", sandwich:"FLAUTA CASERA RELLENA CON SALAME Y QUESO", veggie:"MILANESAS DE BERENJENAS CON QUESO Y TOMATE CON GUARNCIÓN DE PURE DUQUESA" }},
+  { lista:"L20", fecha:"2026-05-20", dia:"Miércoles", menus:{ dia:"HAMBURGUESAS CON QUESO Y PURE DE PAPAS", sandwich:"FIGAZA CASERA CON MILANESA DE POLLO Y QUESO", veggie:"MILANESA DE SOJA CON QUESO Y PURE MIXTO" }},
+  { lista:"L21", fecha:"2026-05-21", dia:"Jueves",    menus:{ dia:"PASTEL DE PAPAS", sandwich:"FIGAZZA DE PASTRÓN Y QUESO", veggie:"TORTILLA DE PAPA RELLENA CON MUZZARELLA" }},
+  { lista:"L22", fecha:"2026-05-22", dia:"Viernes",   menus:{ dia:"HAMBURGUESAS GRATINADAS CON PAPAS DORADAS", sandwich:"PLETZALEJ DE JAMÓN Y QUESO", veggie:"GUISITO VEGETARIANO DE OTOÑO (lentejas, cebolla, morrones, batata, zapallitos y tomates)" }},
+  { lista:"L23", fecha:"2026-05-23", dia:"Sábado",    menus:{ dia:"POLLO CON CREMA DE HONGOS Y RISOTTO", sandwich:"FIGAZZA DE LOMITO AHUMADO Y QUESO", veggie:"MILANESAS DE SOJA CON QUESO CON PURE AMARILLO" }},
+  { lista:"L24", fecha:"2026-05-24", dia:"Domingo",   menus:{ dia:"TERNERA EN GUISO CON SPAGHETTIS AL OLIVA", sandwich:"ZEPELIN DE MATAMBRE ARROLLADO Y QUESO", veggie:"TARTA INDIVIDUAL DE RICOTA Y CALABAZA" }},
+  { lista:"L25", fecha:"2026-05-25", dia:"Lunes",     menus:{ dia:"MILANESA DE CARNE A LA NAPOLITANA CON PURE DE PAPAS ESPECIADO (con perejil)", sandwich:"FLAUTA DE MILANESA DE POLLO Y QUESO", veggie:"HAMBURGUESAS DE QUINOA GRATINADAS CON ZANAHORIAS Y PAPAS AL VAPOR" }},
+  { lista:"L26", fecha:"2026-05-26", dia:"Martes",    menus:{ dia:"CANELONES DE RICOTTA, JAMON Y MUZZARELLA CON SALSA POMODORO", sandwich:"LUNETA DE JAMÓN Y QUESO", veggie:"SALTEADO DE VEGETALES CON ARROZ YAMANI" }},
+  { lista:"L27", fecha:"2026-05-27", dia:"Miércoles", menus:{ dia:"MILANESA DE POLLO CON ARROZ CREMOSO", sandwich:"FLAUTA DE LOMITO AHUMADO Y QUESO", veggie:"PENNE RIGATTI CON CREMA DE CALABAZA, PUERRO Y TOMATITOS CHERRIES" }},
+  { lista:"L28", fecha:"2026-05-28", dia:"Jueves",    menus:{ dia:"RAVIOLES CON BOLOGNESA", sandwich:"ROSETTA DE JAMÓN Y QUESO", veggie:"MEDALLONES DE SOJA CON QUESO Y PAPAS DORADAS" }},
+  { lista:"L1b", fecha:"2026-05-29", dia:"Viernes",   menus:{ dia:"POLLO CON SALSA DE MOSTAZA Y PURÉ DE PAPAS", sandwich:"ARABE DE JAMÓN Y QUESO", veggie:"RISOTTO CON CHAMPIGNONES" }},
+  { lista:"L2b", fecha:"2026-05-30", dia:"Sábado",    menus:{ dia:"LOCRO CRIOLLO", sandwich:"ZEPPELIN DE MATAMBRE ARROLLADO Y QUESO", veggie:"TEMPURA DE BRÓCOLI CON PURE DE CALABAZA" }},
+  { lista:"L3b", fecha:"2026-05-31", dia:"Domingo",   menus:{ dia:"PIZZA MUZZARELLA Y ACEITUNAS", sandwich:"SANDWICH DE PULLED CHICKEN (pollo desmenuzado con vegetales y queso)", veggie:"TORTILLA DE PAPA RELLENA CON MUZZARELLA" }},
+];
+
+// ════════════════════════════════════════════════════════════
+// ADMINS — únicos que ven Elecciones y Cobertura
+// ════════════════════════════════════════════════════════════
+const ADMINS = [
+  { legajo: '863',  empresa: 'PASTEKO' },
+  { legajo: '1081', empresa: 'STEPAKO' },
+  { legajo: '825',  empresa: 'PASTEKO' },
+];
+function esAdmin(legajo, empresa) {
+  return ADMINS.some(a => a.legajo === String(legajo) && a.empresa === empresa.toUpperCase());
+}
+
+// ════════════════════════════════════════════════════════════
+// ESTADO
+// ════════════════════════════════════════════════════════════
+let currentUser = null;
+let eleccionesGuardadas = {};
+let pendingConfirm = {};
+let allData = [];
+let turnosEmpleado = [];
+let MOSAICO_FILTRADO = [];
+let empleadosCache = null; // cache de la base de empleados
+let turnosCache = null; // cache del resultado de validación
+
+// ════════════════════════════════════════════════════════════
+// PRECARGA AL ABRIR (antes del login)
+// ════════════════════════════════════════════════════════════
+window.MOSAICO_SHEET = null;
+(async () => {
+  try {
+    const res = await apiCall({ action: 'mosaico' });
+    if (res.ok && res.data && res.data.length > 0) {
+      window.MOSAICO_SHEET = res.data.map(d => ({
+        lista: d.lista, fecha: d.fecha, dia: d.dia,
+        menus: { dia: d.menu_dia, sandwich: d.sandwich, veggie: d.veggie }
+      }));
+    }
+  } catch(e) {}
+})();
+
+// No se precarga empleados — se valida siempre contra el Sheet
+
+// ════════════════════════════════════════════════════════════
+// LOGIN — VALIDACIÓN DE LEGAJO
+// ════════════════════════════════════════════════════════════
+let empresaSeleccionada = null;
+let legajoValidado = false;
+let nombreEmpleado = '';
+let validacionTimer = null;
+
+function selectEmpresa(emp, el) {
+  empresaSeleccionada = emp;
+  document.querySelectorAll('.empresa-btn').forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  // Revalidar legajo con nueva empresa
+  validarLegajo();
+  checkLoginReady();
+}
+
+function onLegajoInput() {
+  legajoValidado = false;
+  nombreEmpleado = '';
+  turnosCache = null;
+  document.getElementById('nombreValidado').style.display = 'none';
+  document.getElementById('nombreInvalido').style.display = 'none';
+  document.getElementById('btnEntrar').disabled = true;
+
+  clearTimeout(validacionTimer);
+  const legajo = document.getElementById('inputLegajo').value.trim();
+  if (!legajo) return;
+
+  validacionTimer = setTimeout(validarLegajo, 500);
+}
+
+async function validarLegajo() {
+  const legajo = document.getElementById('inputLegajo').value.trim();
+  if (!legajo || !empresaSeleccionada) return;
+
+  const elValidado = document.getElementById('nombreValidado');
+  const elInvalido = document.getElementById('nombreInvalido');
+
+  // Usar action 'turnos' para validar — devuelve nombre si existe
+  try {
+    const res = await apiCall({ action: 'turnos', legajo, empresa: empresaSeleccionada });
+    if (res.ok && res.nombre) {
+      nombreEmpleado = res.nombre;
+      legajoValidado = true;
+      turnosCache = res; // guardar para no repetir llamada al entrar
+      elValidado.textContent = '✓ ' + res.nombre;
+      elValidado.style.display = 'block';
+      elInvalido.style.display = 'none';
+    } else {
+      legajoValidado = false;
+      nombreEmpleado = '';
+      turnosCache = null;
+      elValidado.style.display = 'none';
+      elInvalido.textContent = 'Legajo no encontrado en ' + empresaSeleccionada;
+      elInvalido.style.display = 'block';
+    }
+  } catch(e) {
+    legajoValidado = false;
+    nombreEmpleado = '';
+    elValidado.style.display = 'none';
+    elInvalido.textContent = 'Error de conexión. Intentá de nuevo.';
+    elInvalido.style.display = 'block';
+  }
+  checkLoginReady();
+}
+
+function checkLoginReady() {
+  const legajo = document.getElementById('inputLegajo').value.trim();
+  document.getElementById('btnEntrar').disabled = !(legajo && empresaSeleccionada && legajoValidado);
+}
+
+async function entrar() {
+  const legajo = document.getElementById('inputLegajo').value.trim();
+  if (!legajo || !empresaSeleccionada || !legajoValidado) return;
+
+  const btn = document.getElementById('btnEntrar');
+  btn.disabled = true;
+  const mensajes = ['BUSCANDO TURNOS...', 'CARGANDO MENÚ...', 'CASI LISTO...'];
+  let mi = 0;
+  btn.textContent = mensajes[0];
+  const intervalo = setInterval(() => {
+    mi = (mi + 1) % mensajes.length;
+    btn.textContent = mensajes[mi];
+  }, 900);
+
+  currentUser = { legajo, empresa: empresaSeleccionada, nombre: nombreEmpleado };
+
+  try {
+    // Reusar turnos del cache de validación si disponible
+    const resTurnosPromise = turnosCache
+      ? Promise.resolve(turnosCache)
+      : apiCall({ action: 'turnos', legajo, empresa: empresaSeleccionada });
+    const [resTurnos, resElec] = await Promise.all([
+      resTurnosPromise,
+      apiCall({ action: 'obtener', legajo, empresa: empresaSeleccionada })
+    ]);
+    turnosEmpleado = resTurnos.ok ? resTurnos.fechas : [];
+    eleccionesGuardadas = resElec.ok ? resElec.elecciones || {} : {};
+  } catch(e) {
+    turnosEmpleado = [];
+    eleccionesGuardadas = {};
+  }
+
+  clearInterval(intervalo);
+  const mosaico_base = window.MOSAICO_SHEET || MOSAICO;
+  MOSAICO_FILTRADO = turnosEmpleado.length > 0
+    ? mosaico_base.filter(d => turnosEmpleado.includes(d.fecha))
+    : mosaico_base;
+
+  // Mostrar app
+  document.getElementById('screenLogin').classList.remove('active');
+  document.getElementById('screenApp').classList.add('active');
+  document.getElementById('mainHeader').style.display = 'flex';
+  document.getElementById('headerNombre').textContent = nombreEmpleado || ('Legajo ' + legajo);
+  document.getElementById('headerLegajo').textContent = legajo;
+  document.getElementById('headerEmpresa').textContent = empresaSeleccionada;
+
+  // Mostrar tabs admin solo si corresponde
+  const admin = esAdmin(legajo, empresaSeleccionada);
+  document.getElementById('tabAdmin').style.display = admin ? '' : 'none';
+  document.getElementById('tabCobertura').style.display = admin ? '' : 'none';
+
+  renderCalendario();
+  updateStats();
+}
+
+function logout() {
+  currentUser = null;
+  eleccionesGuardadas = {};
+  pendingConfirm = {};
+  empresaSeleccionada = null;
+  legajoValidado = false;
+  nombreEmpleado = '';
+  turnosCache = null;
+  document.getElementById('inputLegajo').value = '';
+  document.querySelectorAll('.empresa-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('nombreValidado').style.display = 'none';
+  document.getElementById('nombreInvalido').style.display = 'none';
+  document.getElementById('btnEntrar').textContent = 'ENTRAR';
+  document.getElementById('btnEntrar').disabled = true;
+  document.getElementById('screenApp').classList.remove('active');
+  document.getElementById('mainHeader').style.display = 'none';
+  document.getElementById('screenLogin').classList.add('active');
+  switchTab('menu');
+}
+
+// ════════════════════════════════════════════════════════════
+// TABS
+// ════════════════════════════════════════════════════════════
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('vistaMenu').style.display = 'none';
+  document.getElementById('vistaAdmin').style.display = 'none';
+  document.getElementById('vistaCobertura').style.display = 'none';
+  if (tab === 'menu') {
+    document.querySelector('.tab-btn:first-child').classList.add('active');
+    document.getElementById('vistaMenu').style.display = 'block';
+  } else if (tab === 'admin') {
+    document.getElementById('tabAdmin').classList.add('active');
+    document.getElementById('vistaAdmin').style.display = 'block';
+    loadAdmin();
+  } else if (tab === 'cobertura') {
+    document.getElementById('tabCobertura').classList.add('active');
+    document.getElementById('vistaCobertura').style.display = 'block';
+    loadCobertura();
+  }
+}
+
+// ════════════════════════════════════════════════════════════
+// CALENDARIO
+// ════════════════════════════════════════════════════════════
+function renderCalendario() {
+  const wrap = document.getElementById('calendarioWrap');
+  const mosaico = MOSAICO_FILTRADO.length > 0 ? MOSAICO_FILTRADO : MOSAICO;
+  if (!mosaico.length) {
+    wrap.innerHTML = '<div class="empty-state">No se encontraron días de trabajo para este legajo en mayo.</div>';
+    return;
+  }
+  const semanas = agruparPorSemana(mosaico);
+  let html = '';
+  semanas.forEach(semana => {
+    html += `<div class="semana-label">${getSemanaLabel(semana)}</div>`;
+    html += `<div class="semana-grid">`;
+    semana.forEach(d => { html += renderDiaCard(d); });
+    html += `</div>`;
+  });
+  wrap.innerHTML = html;
+}
+
+function renderDiaCard(d) {
+  const fecha = d.fecha;
+  const guardado = eleccionesGuardadas[fecha];
+  const pending = pendingConfirm[fecha];
+  const hoy = new Date().toISOString().split('T')[0];
+  const pasado = fecha < hoy;
+
+  let clases = 'dia-card';
+  if (guardado) clases += ' elegido';
+
+  const numDia = new Date(fecha + 'T12:00:00').getDate();
+
+  let opcionesHTML = '';
+  if (guardado) {
+    const tipoKey = guardado.tipo === 'Menú del Día' ? 'dia' : guardado.tipo === 'Menú Sandwich' ? 'sandwich' : 'veggie';
+    opcionesHTML = `
+      <div class="menu-opciones">
+        <div class="menu-opcion selected bloqueado">
+          <div class="tipo-badge badge-${tipoKey}">${guardado.tipo}</div>
+          <div class="menu-texto">${guardado.menu}</div>
+        </div>
+      </div>
+      <div class="confirmado-badge">✓ Confirmado</div>`;
+  } else {
+    const tipos = [
+      { key: 'dia', label: 'Menú del Día', texto: d.menus.dia },
+      { key: 'sandwich', label: 'Menú Sandwich', texto: d.menus.sandwich },
+      { key: 'veggie', label: 'Menú Veggie', texto: d.menus.veggie },
+    ];
+    const opcs = tipos.map(t => {
+      const sel = pending && pending.tipo === t.label ? 'selected' : '';
+      return `<div class="menu-opcion ${sel}" onclick="selectMenu('${fecha}','${t.label}',this.closest('.dia-card'))">
+        <div class="tipo-badge badge-${t.key}">${t.label}</div>
+        <div class="menu-texto">${t.texto}</div>
+      </div>`;
+    }).join('');
+    opcionesHTML = `
+      <div class="menu-opciones">${opcs}</div>
+      <div style="padding:0 8px 8px">
+        <button class="confirmar-btn" id="btn-${fecha}" onclick="confirmar('${fecha}')" ${pending ? '' : 'disabled'}>
+          CONFIRMAR ELECCIÓN
+        </button>
+      </div>`;
+  }
+
+  return `
+    <div class="${clases}" id="card-${fecha}">
+      <div class="dia-header">
+        <span class="dia-nombre">${d.dia.substring(0,3).toUpperCase()}</span>
+        <span class="dia-numero">${numDia}</span>
+      </div>
+      ${opcionesHTML}
+    </div>`;
+}
+
+function agruparPorSemana(dias) {
+  const semanas = [];
+  let actual = [], semKey = null;
+  dias.forEach(d => {
+    const lunes = getLunes(new Date(d.fecha + 'T12:00:00'));
+    const key = lunes.toISOString().split('T')[0];
+    if (semKey !== key) {
+      if (actual.length) semanas.push(actual);
+      actual = [];
+      semKey = key;
+    }
+    actual.push(d);
+  });
+  if (actual.length) semanas.push(actual);
+  return semanas;
+}
+
+function getLunes(fecha) {
+  const d = new Date(fecha);
+  const day = d.getDay();
+  d.setDate(d.getDate() + (day === 0 ? -6 : 1 - day));
+  return d;
+}
+
+function getSemanaLabel(semana) {
+  const p = new Date(semana[0].fecha + 'T12:00:00');
+  const u = new Date(semana[semana.length-1].fecha + 'T12:00:00');
+  const opts = { day: 'numeric', month: 'long' };
+  return `Semana del ${p.toLocaleDateString('es-AR', opts)} al ${u.toLocaleDateString('es-AR', opts)}`;
+}
+
+function selectMenu(fecha, tipo, card) {
+  card.querySelectorAll('.menu-opcion').forEach(o => o.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
+  const tipoKey = tipo === 'Menú del Día' ? 'dia' : tipo === 'Menú Sandwich' ? 'sandwich' : 'veggie';
+  const dia = (MOSAICO_FILTRADO.length > 0 ? MOSAICO_FILTRADO : MOSAICO).find(d => d.fecha === fecha);
+  pendingConfirm[fecha] = { tipo, menu: dia.menus[tipoKey] };
+  const btn = document.getElementById('btn-' + fecha);
+  if (btn) btn.disabled = false;
+}
+
+async function confirmar(fecha) {
+  const pending = pendingConfirm[fecha];
+  if (!pending) return;
+  const btn = document.getElementById('btn-' + fecha);
+  btn.disabled = true;
+  btn.textContent = 'GUARDANDO...';
+
+  const mosaico = MOSAICO_FILTRADO.length > 0 ? MOSAICO_FILTRADO : MOSAICO;
+  const dia = mosaico.find(d => d.fecha === fecha);
+
+  try {
+    const res = await apiCall({
+      action: 'guardar',
+      legajo: currentUser.legajo,
+      empresa: currentUser.empresa,
+      fecha, lista: dia.lista, dia: dia.dia,
+      tipo_menu: pending.tipo,
+      menu: pending.menu
+    });
+    if (res.ok) {
+      eleccionesGuardadas[fecha] = { tipo: pending.tipo, menu: pending.menu };
+      delete pendingConfirm[fecha];
+      const card = document.getElementById('card-' + fecha);
+      card.outerHTML = renderDiaCard(dia);
+      updateStats();
+      showToast('✓ Menú confirmado para el ' + fecha.split('-')[2] + '/05', 'ok');
+    } else {
+      btn.textContent = 'CONFIRMAR ELECCIÓN';
+      btn.disabled = false;
+      showToast(res.error || 'Error al guardar', 'err');
+    }
+  } catch(e) {
+    btn.textContent = 'CONFIRMAR ELECCIÓN';
+    btn.disabled = false;
+    showToast('Error de conexión. Intentá de nuevo.', 'err');
+  }
+}
+
+function updateStats() {
+  const mosaico = MOSAICO_FILTRADO.length > 0 ? MOSAICO_FILTRADO : MOSAICO;
+  const elegidos = Object.keys(eleccionesGuardadas).length;
+  document.getElementById('statElegidos').textContent = elegidos;
+  document.getElementById('statPendientes').textContent = mosaico.length - elegidos;
+}
+
+// ════════════════════════════════════════════════════════════
+// ADMIN
+// ════════════════════════════════════════════════════════════
+async function loadAdmin() {
+  document.getElementById('adminContent').innerHTML = '<div class="loading">Cargando datos</div>';
+  try {
+    const res = await apiCall({ action: 'admin' });
+    if (res.ok) {
+      allData = res.data || [];
+      populateFiltroFechas();
+      renderAdmin();
+    } else {
+      document.getElementById('adminContent').innerHTML = '<div class="empty-state">Error al cargar datos.</div>';
+    }
+  } catch(e) {
+    document.getElementById('adminContent').innerHTML = '<div class="empty-state">Error de conexión.</div>';
+  }
+}
+
+function populateFiltroFechas() {
+  const fechas = [...new Set(allData.map(r => r.FECHA))].sort();
+  const sel = document.getElementById('filtroFecha');
+  sel.innerHTML = '<option value="">Todas las fechas</option>';
+  fechas.forEach(f => {
+    const opt = document.createElement('option');
+    opt.value = f; opt.textContent = f;
+    sel.appendChild(opt);
+  });
+}
+
+function renderAdmin() {
+  const filtEmp = document.getElementById('filtroEmpresa').value;
+  const filtTipo = document.getElementById('filtroTipo').value;
+  const filtFecha = document.getElementById('filtroFecha').value;
+  let data = allData.filter(r =>
+    (!filtEmp || r.EMPRESA === filtEmp) &&
+    (!filtTipo || r.TIPO_MENU === filtTipo) &&
+    (!filtFecha || r.FECHA === filtFecha)
+  );
+  const totalDia = data.filter(r => r.TIPO_MENU === 'Menú del Día').length;
+  const totalSandwich = data.filter(r => r.TIPO_MENU === 'Menú Sandwich').length;
+  const totalVeggie = data.filter(r => r.TIPO_MENU === 'Menú Veggie').length;
+  document.getElementById('adminResumen').innerHTML = `
+    <div class="resumen-card"><div class="resumen-num">${data.length}</div><div class="resumen-label">Elecciones totales</div></div>
+    <div class="resumen-card"><div class="resumen-num">${totalDia}</div><div class="resumen-label">Menú del Día</div></div>
+    <div class="resumen-card"><div class="resumen-num">${totalSandwich}</div><div class="resumen-label">Sandwich</div></div>
+    <div class="resumen-card"><div class="resumen-num">${totalVeggie}</div><div class="resumen-label">Veggie</div></div>`;
+  if (!data.length) {
+    document.getElementById('adminContent').innerHTML = '<div class="empty-state">No hay elecciones con esos filtros.</div>';
+    return;
+  }
+  const rows = data.map(r => {
+    const empClass = r.EMPRESA === 'PASTEKO' ? 'pasteko' : 'stepako';
+    const tipoKey = r.TIPO_MENU === 'Menú del Día' ? 'dia' : r.TIPO_MENU === 'Menú Sandwich' ? 'sandwich' : 'veggie';
+    return `<tr>
+      <td>${r.TIMESTAMP}</td>
+      <td><strong>${r.LEGAJO}</strong></td>
+      <td><span class="badge-empresa badge-${empClass}">${r.EMPRESA}</span></td>
+      <td>${r.FECHA}</td><td>${r.DIA}</td>
+      <td><span class="tipo-badge badge-${tipoKey}">${r.TIPO_MENU}</span></td>
+      <td style="max-width:220px;font-size:12px;color:var(--text-muted)">${r.MENU}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('adminContent').innerHTML = `
+    <table>
+      <thead><tr><th>Timestamp</th><th>Legajo</th><th>Empresa</th><th>Fecha</th><th>Día</th><th>Tipo</th><th>Menú</th></tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+}
+
+// ════════════════════════════════════════════════════════════
+// COBERTURA
+// ════════════════════════════════════════════════════════════
+async function loadCobertura() {
+  document.getElementById('coberturaContent').innerHTML = '<div class="loading">Cargando cobertura</div>';
+  try {
+    const res = await apiCall({ action: 'cobertura', empresa: currentUser ? currentUser.empresa : '' });
+    if (!res.ok) throw new Error();
+    renderCobertura(res.data);
+  } catch(e) {
+    document.getElementById('coberturaContent').innerHTML = '<div class="empty-state">Error al cargar cobertura.</div>';
+  }
+}
+
+function renderCobertura(data) {
+  if (!data || !data.length) {
+    document.getElementById('coberturaContent').innerHTML = '<div class="empty-state">No hay datos de turnos cargados.</div>';
+    return;
+  }
+  const totalDias = data.length;
+  const completados = data.filter(d => d.elegidos === d.total).length;
+  const pct = totalDias > 0 ? Math.round(completados / totalDias * 100) : 0;
+  const totalElec = data.reduce((s,d) => s + d.elegidos, 0);
+  const totalPend = data.reduce((s,d) => s + (d.total - d.elegidos), 0);
+
+  let html = `
+    <div class="admin-resumen" style="margin-bottom:18px">
+      <div class="resumen-card"><div class="resumen-num">${pct}%</div><div class="resumen-label">Días completos</div></div>
+      <div class="resumen-card"><div class="resumen-num">${totalElec}</div><div class="resumen-label">Elegidos</div></div>
+      <div class="resumen-card"><div class="resumen-num" style="color:var(--red)">${totalPend}</div><div class="resumen-label">Pendientes</div></div>
+    </div>
+    <div class="admin-table-wrap"><table>
+      <thead><tr><th>Fecha</th><th>Empresa</th><th>Elegidos</th><th>Total</th><th>%</th><th>Faltantes</th></tr></thead>
+      <tbody>`;
+  data.forEach(d => {
+    const p = d.total > 0 ? Math.round(d.elegidos/d.total*100) : 0;
+    const col = p === 100 ? 'var(--green)' : p >= 50 ? 'var(--bz-blue)' : 'var(--red)';
+    const falt = d.faltantes && d.faltantes.length
+      ? d.faltantes.slice(0,5).join(', ') + (d.faltantes.length > 5 ? ` +${d.faltantes.length-5} más` : '')
+      : '—';
+    const empClass = d.empresa === 'PASTEKO' ? 'pasteko' : 'stepako';
+    html += `<tr>
+      <td>${d.fecha}</td>
+      <td><span class="badge-empresa badge-${empClass}">${d.empresa}</span></td>
+      <td><strong>${d.elegidos}</strong></td><td>${d.total}</td>
+      <td><span style="color:${col};font-weight:700">${p}%</span></td>
+      <td style="font-size:11px;color:var(--text-muted);max-width:200px">${falt}</td>
+    </tr>`;
+  });
+  html += '</tbody></table></div>';
+  document.getElementById('coberturaContent').innerHTML = html;
+}
+
+// ════════════════════════════════════════════════════════════
+// API (JSONP)
+// ════════════════════════════════════════════════════════════
+async function apiCall(params) {
+  const qs = new URLSearchParams(params).toString();
+  const url = `${SCRIPT_URL}?${qs}`;
+  return new Promise((resolve, reject) => {
+    const cbName = 'cb_' + Date.now();
+    const script = document.createElement('script');
+    window[cbName] = function(data) {
+      delete window[cbName];
+      document.body.removeChild(script);
+      resolve(data);
+    };
+    script.onerror = () => reject(new Error('Script error'));
+    script.src = url + '&callback=' + cbName;
+    document.body.appendChild(script);
+    setTimeout(() => {
+      if (window[cbName]) { delete window[cbName]; reject(new Error('Timeout')); }
+    }, 10000);
+  });
+}
+
+// ════════════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════════════
+let toastTimer;
+function showToast(msg, type = 'ok') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast show ${type}`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
